@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class PagamentoControle {
     @Autowired
 
-    private PagamentoRepositorio pagamentoRepositorio;
+    private PagamentoRepositorio pagamentoRepository;
 
     @PostMapping
     public Pagamento criaPagamento(@RequestBody Pagamento pagamento) {
-        return pagamentoRepositorio.save(pagamento);
+        return pagamentoRepository.save(pagamento);
     }
 }

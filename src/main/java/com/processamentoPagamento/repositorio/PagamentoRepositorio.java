@@ -1,4 +1,4 @@
-package com.processamentoPagamento.repository;
+package com.processamentoPagamento.repositorio;
 
 import com.processamentoPagamento.modelo.Pagamento;
 import org.springframework.data.jpa.repository.JpaRepository;

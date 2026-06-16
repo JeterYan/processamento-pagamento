@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class ProcessamentoPagamentosAplicacao {
 
 	@Autowired
-	private PagamentoRepositorio pagamentoRepository;
+	private PagamentoRepositorio pagamentoRepositorio;
 
 	@PostMapping
 	public Pagamento criarPagamento(@RequestBody Pagamento pagamento) {
-		return pagamentoRepository.save(pagamento);
+		return pagamentoRepositorio.save(pagamento);
 	}
 
 	public static void main(String[] args) {

@@ -3,10 +3,11 @@ package com.processamentoPagamento.controle;
 import com.processamentoPagamento.modelo.Pagamento;
 import com.processamentoPagamento.repositorio.PagamentoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @RestController
 @RequestMapping("/pagamentos")
@@ -19,6 +20,18 @@ public class PagamentoControle {
 
     @PostMapping
     public Pagamento criaPagamento(@RequestBody Pagamento pagamento) {
+
         return pagamentoRepositorio.save(pagamento);
     }
+
+    @GetMapping
+    public List<Pagamento> listaPagamentos(){
+        return pagamentoRepositorio.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Pagamento buscarPorId(@PathVariable Long id){
+        return pagamentoRepositorio.findById(id).orElse(null);
+    }
 }
+

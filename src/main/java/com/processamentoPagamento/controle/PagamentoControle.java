@@ -12,7 +12,6 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 @RestController
 @RequestMapping("/pagamentos")
 
-
 public class PagamentoControle {
     @Autowired
 
@@ -20,7 +19,6 @@ public class PagamentoControle {
 
     @PostMapping
     public Pagamento criaPagamento(@RequestBody Pagamento pagamento) {
-
         return pagamentoRepositorio.save(pagamento);
     }
 
@@ -33,5 +31,11 @@ public class PagamentoControle {
     public Pagamento buscarPorId(@PathVariable Long id){
         return pagamentoRepositorio.findById(id).orElse(null);
     }
+
+    @DeleteMapping("/{id}")
+    public void deletarPagamento(@PathVariable Long id){
+        pagamentoRepositorio.deleteById(id);
+    }
+
 }
 

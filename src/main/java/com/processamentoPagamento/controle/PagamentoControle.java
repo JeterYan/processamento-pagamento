@@ -2,6 +2,7 @@ package com.processamentoPagamento.controle;
 
 import com.processamentoPagamento.modelo.Pagamento;
 import com.processamentoPagamento.repositorio.PagamentoRepositorio;
+import com.processamentoPagamento.servico.PagamentoServico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,28 +14,31 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 @RequestMapping("/pagamentos")
 
 public class PagamentoControle {
-    @Autowired
 
-    private PagamentoRepositorio pagamentoRepositorio;
+    private final PagamentoServico pagamentoServico;
+
+    public PagamentoControle(PagamentoServico pagamentoServico) {
+        this.pagamentoServico = pagamentoServico;
+    }
 
     @PostMapping
     public Pagamento criaPagamento(@RequestBody Pagamento pagamento) {
-        return pagamentoRepositorio.save(pagamento);
+        return pagamentoServico.salvar(pagamento);
     }
 
     @GetMapping
     public List<Pagamento> listaPagamentos(){
-        return pagamentoRepositorio.findAll();
+        return pagamentoServico.listarTodos();
     }
 
     @GetMapping("/{id}")
     public Pagamento buscarPorId(@PathVariable Long id){
-        return pagamentoRepositorio.findById(id).orElse(null);
+        return pagamentoServico.buscarPorId(id);
     }
 
     @DeleteMapping("/{id}")
     public void deletarPagamento(@PathVariable Long id){
-        pagamentoRepositorio.deleteById(id);
+        pagamentoServico.deletarPorId(id);
     }
 
 }

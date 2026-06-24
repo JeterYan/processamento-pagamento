@@ -5,6 +5,7 @@ import com.processamentoPagamento.repositorio.PagamentoRepositorio;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class PagamentoServico {
@@ -20,6 +21,18 @@ public class PagamentoServico {
             return null;
         }
         return pagamentoRepositorio.save(pagamento);
+    }
+
+    public List<Pagamento> listarTodos() {
+        return pagamentoRepositorio.findAll();
+    }
+
+    public Pagamento buscarPorId(Long id) {
+        return pagamentoRepositorio.findById(id).orElse(null);
+    }
+
+    public void deletarPorId(Long id) {
+        pagamentoRepositorio.deleteById(id);
     }
 }
 

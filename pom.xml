@@ -11,8 +11,8 @@
 	<groupId>com.processamentoPagamento</groupId>
 	<artifactId>processamento-pagamentos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
+	<name>processamento-pagamentos</name>
+	<description>API REST para processamento e validação de meios de pagamento para o mercado de seguros.</description>
 	<url/>
 	<licenses>
 		<license/>
